@@ -11,31 +11,7 @@
 #include <stdio.h>
 #include <OpenCL/OpenCL.h>
 
-// Simple compute kernel which computes the square of an input array
-const char *kernelSource = "\n" \
-"__kernel void square(                                                  \n" \
-"   __global float* input,                                              \n" \
-"   __global float* output,                                             \n" \
-"   const unsigned int count)                                           \n" \
-"{                                                                      \n" \
-"   int i = get_global_id(0);                                           \n" \
-"   if(i < count)                                                       \n" \
-"       output[i] = input[i] * input[i];                                \n" \
-"}                                                                      \n" \
-"\n";
-
-////////////////////////////////////////////////////////////////////////////////
-
-#define NUM_OF_VALUES 100000
-
 int main( int argc, const char * argv[]) {
-    
-    unsigned int numOfValues = NUM_OF_VALUES;
-    float input[NUM_OF_VALUES];
-    float output[NUM_OF_VALUES];
-    
-    for(int i = 0; i < NUM_OF_VALUES; i++)
-        input[i] = rand() / (float)RAND_MAX;
     
     cl_int clerr = CL_SUCCESS;
     
